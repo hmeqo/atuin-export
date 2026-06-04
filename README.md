@@ -5,8 +5,10 @@ Export [atuin](https://github.com/atuinsh/atuin) history to shell history files.
 ## Usage
 
 ```bash
-atuin-export <fish|bash|zsh> [options]
+atuin-export [<shell>] [options]
 ```
+
+`<shell>` — optional, auto-detects from `$SHELL` when omitted (`fish`, `bash`, or `zsh`).
 
 | Flag                  | Description                                                      |
 | --------------------- | ---------------------------------------------------------------- |
@@ -14,13 +16,16 @@ atuin-export <fish|bash|zsh> [options]
 | `-d, --db <path>`     | Atuin database path (default: `~/.local/share/atuin/history.db`) |
 
 ```bash
-# Append to fish history (default location)
+# Auto-detect shell from $SHELL
+atuin-export
+
+# Explicit shell
 atuin-export fish
 
-# Export to a custom file
+# Custom output
 atuin-export bash --output ~/exported_history.txt
 
-# Use a different atuin database
+# Custom database
 atuin-export zsh --db /path/to/atuin/history.db
 ```
 
