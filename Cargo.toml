@@ -8,3 +8,10 @@ anyhow = "1"
 clap = { version = "4", features = ["derive"] }
 dirs = "5"
 rusqlite = { version = "0.31", features = ["bundled"] }
+
+[profile.release]
+panic = "abort"
+lto = true
+opt-level = 3
+codegen-units = 1
+strip = true
