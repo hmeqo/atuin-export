@@ -4,6 +4,7 @@ use clap::Parser;
 mod atuin;
 mod cli;
 mod export;
+mod fish_paths;
 mod shell;
 
 fn main() -> Result<()> {
@@ -25,7 +26,7 @@ fn main() -> Result<()> {
         .unwrap_or_else(|| shell.default_history_path(&home));
 
     match shell {
-        shell::Shell::Fish => export::export_fish(&entries, output)?,
+        shell::Shell::Fish => export::export_fish(&entries, &home, output)?,
         shell::Shell::Bash => export::export_bash(&entries, output)?,
         shell::Shell::Zsh => export::export_zsh(&entries, output)?,
     }
